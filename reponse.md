@@ -16,7 +16,9 @@ GROUP BY c.name;
 1. SELECT title FROM `movies` WHERE title LIKE '%king%';
 1. INSERT INTO collections(name, slug) VALUES('Best-of de 2010', '18345-best-of-2010');
 1. UPDATE `movies` SET `collection_id`= 4 WHERE created_at < DATE('2011-01-01');
-1. /
+1. INSERT INTO `movies_genres`(`movie_id`, `genre_id`) VALUES(  
+    (SELECT m.id FROM movies m WHERE slug = '46564-gladiator'), (SELECT g.id FROM genres g WHERE g.slug='54281-war')  
+);
 1. DELETE movies FROM movies  
 JOIN movies_genres mg ON mg.movie_id = movies.id  
 JOIN genres g ON g.id = mg.genre_id  
